@@ -19,24 +19,25 @@ import {
   NavigationMenuViewport,
 } from "@/components/ui/navigation-menu";
 import { NavLink } from "react-router-dom";
+import { Button } from "../ui/button";
 
 function Home() {
   return (
     <>
       <section className=" relative h-screen w-full">
-        <nav className=" absolute top-0 z-30 w-full border-b-2 border-gray-800">
+        <nav className=" absolute top-0 z-30 w-full border-b-2 border-gray-950">
           <div className=" container mx-auto flex items-center justify-between py-5 px-10">
             <div className="flex items-center">
               <IoLocationSharp className="text-5xl text-green-800" />
               <h1 className="text-4xl font-bold text-green-800">Tourist</h1>
             </div>
             <div>
-              <NavigationMenu>
+              <NavigationMenu className={'relative'}>
                 <NavigationMenuList className={"flex gap-5"}>
                   <NavigationMenuItem>
                     <NavigationMenuLink
                       className={
-                        "px-0 py-0 hover:bg-transparent hover:text-green-400 font-bold text-md"
+                        "px-0 py-0 hover:bg-transparent hover:text-green-800 font-bold text-md hover:underline underline-offset-38 hover:decoration-2"
                       }
                     >
                       {" "}
@@ -46,18 +47,107 @@ function Home() {
                   <NavigationMenuItem>
                     <NavigationMenuLink
                       className={
-                        "px-0 py-0 hover:bg-transparent hover:text-green-400 font-bold text-md"
+                        "px-0 py-0 hover:bg-transparent hover:text-green-800 font-bold text-md hover:underline underline-offset-38 hover:decoration-2"
                       }
                     >
                       {" "}
                       About
                     </NavigationMenuLink>
                   </NavigationMenuItem>
-                  <NavigationMenuItem>
-                    <NavigationMenuTrigger className="px-0 py-0 bg-transparent hover:bg-transparent hover:text-green-400 font-bold text-md">
-                      services
+                  <NavigationMenuItem  >
+                    <NavigationMenuTrigger className={'  text-black  px-0 py-0 bg-transparent hover:bg-transparent h-auto text-md font-bold hover:text-green-800 shadow-none border-none  data-[state=open]:text-green-800 hover:underline  data-[state=open]:hover:underline-offset-38 hover:decoration-2'}>
+                      
+                      Service
+                    
                     </NavigationMenuTrigger>
+                    <NavigationMenuContent className={'  bg-white p- rounded-md shadow-md w-full '}>
+                      <ul className="flex flex-col max-w-60   ">
+                        <li>
+                          <NavigationMenuLink className={' px-2  py-1 hover:bg-gray-100 rounded w-30 font-bold'}>
+                            Services
+                          </NavigationMenuLink>
+                        </li>
+                        <li>
+                          <NavigationMenuLink  className={' px-2 text-center py-1 hover:bg-gray-100 rounded w-30 font-bold'}>
+                            Services Details
+                          </NavigationMenuLink>
+                        </li>
+                      </ul>
+                    </NavigationMenuContent>
                   </NavigationMenuItem>
+                  <NavigationMenuItem >
+                    <NavigationMenuTrigger className={'text-black  px-0 py-0 bg-transparent hover:bg-transparent h-auto text-md font-bold hover:text-green-800 shadow-none border-none  data-[state=open]:text-green-800 hover:underline  data-[state=open]:hover:underline-offset-38 hover:decoration-2'}>
+                      
+                      Package
+                    
+                    </NavigationMenuTrigger>
+                    <NavigationMenuContent className={'bg-white p- rounded-md shadow-md w-48 '}>
+                      <ul className=" flex flex-col max-w-60 ">
+                        <li>
+                          <NavigationMenuLink className={' px-2  py-1 hover:bg-gray-100 rounded w-30 font-bold'}>
+                            Packages
+                          </NavigationMenuLink>
+                        </li>
+                        <li>
+                          <NavigationMenuLink  className={' px-2  py-1 hover:bg-gray-100 rounded w-40 font-bold'}>
+                            Packages Details
+                          </NavigationMenuLink>
+                        </li>
+                      </ul>
+                    </NavigationMenuContent>
+                  </NavigationMenuItem>
+                  <NavigationMenuItem>
+                    <NavigationMenuTrigger className={'text-black  px-0 py-0 bg-transparent hover:bg-transparent h-auto text-md font-bold hover:text-green-800 shadow-none border-none  data-[state=open]:text-green-800 hover:underline  data-[state=open]:hover:underline-offset-38 hover:decoration-2'}>
+                      
+                      Pages
+                    
+                    </NavigationMenuTrigger>
+                    <NavigationMenuContent className={'bg-white p- rounded-md shadow-md w-48'}>
+                      <ul className="flex flex-col max-w-60 ">
+                        <li>
+                          <NavigationMenuLink className={' px-2  py-1 hover:bg-gray-100 rounded w-30 font-bold'}>
+                            FAQs
+                          </NavigationMenuLink>
+                        </li>
+                        <li>
+                          <NavigationMenuLink  className={' px-2  py-1 hover:bg-gray-100 rounded w-40 font-bold'}>
+                            Booking
+                          </NavigationMenuLink>
+                        </li>
+                        <li>
+                          <NavigationMenuLink  className={' px-2  py-1 hover:bg-gray-100 rounded w-40 font-bold'}>
+                            Destination
+                          </NavigationMenuLink>
+                        </li>
+                        <li>
+                          <NavigationMenuLink  className={' px-2  py-1 hover:bg-gray-100 rounded w-40 font-bold'}>
+                           Travel Guides
+                          </NavigationMenuLink>
+                        </li>
+                        <li>
+                          <NavigationMenuLink  className={' px-2  py-1 hover:bg-gray-100 rounded w-40 font-bold'}>
+                            Testimonial
+                          </NavigationMenuLink>
+                        </li>
+                        <li>
+                          <NavigationMenuLink  className={' px-2  py-1 hover:bg-gray-100 rounded w-40 font-bold'}>
+                            404 Page
+                          </NavigationMenuLink>
+                        </li>
+                      </ul>
+                    </NavigationMenuContent>
+                  </NavigationMenuItem>
+                   <NavigationMenuItem>
+                    <NavigationMenuLink
+                      className={
+                        "px-0 py-0 hover:bg-transparent hover:text-green-800 font-bold text-md hover:underline underline-offset-38 hover:decoration-2"
+                      }
+                    >
+                      {" "}
+                     Contact
+                    </NavigationMenuLink>
+                  </NavigationMenuItem>
+                  <Button className={'py-4 px-5 rounded-4xl bg-green-800 font-bold text-md'}>Register</Button>
                 </NavigationMenuList>
               </NavigationMenu>
             </div>
@@ -128,6 +218,16 @@ function Home() {
           <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-10" />
           <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-10" />
         </Carousel>
+      </section>
+      <section>
+        <div className="flex ">
+          <div>
+            <img src="" alt="" />
+          </div>
+          <div>
+            
+          </div>
+        </div>
       </section>
     </>
   );
