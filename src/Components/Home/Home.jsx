@@ -23,36 +23,51 @@ import { Button } from "../ui/button";
 import { BsThreeDots } from "react-icons/bs";
 import { FaArrowRight } from "react-icons/fa";
 
-function Home() {
-   const [scrolled, setScrolled] = useState(false);
 
-    useEffect(() => {
+function Home() {
+  const [scrolled, setScrolled] = useState(false);
+  const [card,setCard]=useState([])
+  useEffect(()=>{
+    fetch("https://mocki.io/v1/a77552e8-58ad-4610-8b25-f3b5db28602c")
+    .then(res=>res.json())
+
+    .then(data=>{
+       
+      setCard(data.services)})
+  },[])
+
+  useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 80);
     };
-     window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-     }, [])
+  }, []);
   return (
     <>
       <section className="relative  h-screen w-full  ">
-        <nav className={`
+        <nav
+          className={`
           fixed  z-10 transition-all duration-300 border-b-2 border-gray-900
-          ${scrolled
-            ? "bg-white shadow-lg w-full mx-auto top-0 "
-            : "bg-transparent w-full "
+          ${
+            scrolled
+              ? "bg-white shadow-lg w-full mx-auto top-0 "
+              : "bg-transparent w-full "
           }
-        `}>
-          <div className={`
+        `}
+        >
+          <div
+            className={`
     flex items-center justify-between transition-all duration-300 
     ${scrolled ? "px-8 py-4" : "px-10 py-5"}
-  `}>
+  `}
+          >
             <div className="flex items-center">
               <IoLocationSharp className="text-5xl text-green-800" />
               <h1 className="text-4xl font-bold text-green-800">Tourist</h1>
             </div>
             <div>
-              <NavigationMenu className={'relative'}>
+              <NavigationMenu className={"relative"}>
                 <NavigationMenuList className={"flex gap-5"}>
                   <NavigationMenuItem>
                     <NavigationMenuLink
@@ -74,42 +89,66 @@ function Home() {
                       About
                     </NavigationMenuLink>
                   </NavigationMenuItem>
-                  <NavigationMenuItem  >
-                    <NavigationMenuTrigger className={'  text-black  px-0 py-0 bg-transparent hover:bg-transparent h-auto text-md font-bold hover:text-green-800 shadow-none border-none  data-[state=open]:text-green-800 hover:underline  data-[state=open]:hover:underline-offset-38 hover:decoration-2'}>
-                      
+                  <NavigationMenuItem>
+                    <NavigationMenuTrigger
+                      className={
+                        "  text-black  px-0 py-0 bg-transparent hover:bg-transparent h-auto text-md font-bold hover:text-green-800 shadow-none border-none  data-[state=open]:text-green-800 hover:underline  data-[state=open]:hover:underline-offset-38 hover:decoration-2"
+                      }
+                    >
                       Service
-                    
                     </NavigationMenuTrigger>
-                    <NavigationMenuContent className={'  bg-white p- rounded-md shadow-md w-full '}>
+                    <NavigationMenuContent
+                      className={"  bg-white p- rounded-md shadow-md w-full "}
+                    >
                       <ul className="flex flex-col max-w-60   ">
                         <li>
-                          <NavigationMenuLink className={' px-2  py-1 hover:bg-gray-100 rounded w-30 font-bold'}>
+                          <NavigationMenuLink
+                            className={
+                              " px-2  py-1 hover:bg-gray-100 rounded w-30 font-bold"
+                            }
+                          >
                             Services
                           </NavigationMenuLink>
                         </li>
                         <li>
-                          <NavigationMenuLink  className={' px-2 text-center py-1 hover:bg-gray-100 rounded w-30 font-bold'}>
+                          <NavigationMenuLink
+                            className={
+                              " px-2 text-center py-1 hover:bg-gray-100 rounded w-30 font-bold"
+                            }
+                          >
                             Services Details
                           </NavigationMenuLink>
                         </li>
                       </ul>
                     </NavigationMenuContent>
                   </NavigationMenuItem>
-                  <NavigationMenuItem >
-                    <NavigationMenuTrigger className={'text-black  px-0 py-0 bg-transparent hover:bg-transparent h-auto text-md font-bold hover:text-green-800 shadow-none border-none  data-[state=open]:text-green-800 hover:underline  data-[state=open]:hover:underline-offset-38 hover:decoration-2'}>
-                      
+                  <NavigationMenuItem>
+                    <NavigationMenuTrigger
+                      className={
+                        "text-black  px-0 py-0 bg-transparent hover:bg-transparent h-auto text-md font-bold hover:text-green-800 shadow-none border-none  data-[state=open]:text-green-800 hover:underline  data-[state=open]:hover:underline-offset-38 hover:decoration-2"
+                      }
+                    >
                       Package
-                    
                     </NavigationMenuTrigger>
-                    <NavigationMenuContent className={'bg-white p- rounded-md shadow-md w-48 '}>
+                    <NavigationMenuContent
+                      className={"bg-white p- rounded-md shadow-md w-48 "}
+                    >
                       <ul className=" flex flex-col max-w-60 ">
                         <li>
-                          <NavigationMenuLink className={' px-2  py-1 hover:bg-gray-100 rounded w-30 font-bold'}>
+                          <NavigationMenuLink
+                            className={
+                              " px-2  py-1 hover:bg-gray-100 rounded w-30 font-bold"
+                            }
+                          >
                             Packages
                           </NavigationMenuLink>
                         </li>
                         <li>
-                          <NavigationMenuLink  className={' px-2  py-1 hover:bg-gray-100 rounded w-40 font-bold'}>
+                          <NavigationMenuLink
+                            className={
+                              " px-2  py-1 hover:bg-gray-100 rounded w-40 font-bold"
+                            }
+                          >
                             Packages Details
                           </NavigationMenuLink>
                         </li>
@@ -117,57 +156,91 @@ function Home() {
                     </NavigationMenuContent>
                   </NavigationMenuItem>
                   <NavigationMenuItem>
-                    <NavigationMenuTrigger className={'text-black  px-0 py-0 bg-transparent hover:bg-transparent h-auto text-md font-bold hover:text-green-800 shadow-none border-none  data-[state=open]:text-green-800 hover:underline  data-[state=open]:hover:underline-offset-38 hover:decoration-2'}>
-                      
+                    <NavigationMenuTrigger
+                      className={
+                        "text-black  px-0 py-0 bg-transparent hover:bg-transparent h-auto text-md font-bold hover:text-green-800 shadow-none border-none  data-[state=open]:text-green-800 hover:underline  data-[state=open]:hover:underline-offset-38 hover:decoration-2"
+                      }
+                    >
                       Pages
-                    
                     </NavigationMenuTrigger>
-                    <NavigationMenuContent className={'bg-white p- rounded-md shadow-md w-48'}>
+                    <NavigationMenuContent
+                      className={"bg-white p- rounded-md shadow-md w-48"}
+                    >
                       <ul className="flex flex-col max-w-60 ">
                         <li>
-                          <NavigationMenuLink className={' px-2  py-1 hover:bg-gray-100 rounded w-30 font-bold'}>
+                          <NavigationMenuLink
+                            className={
+                              " px-2  py-1 hover:bg-gray-100 rounded w-30 font-bold"
+                            }
+                          >
                             FAQs
                           </NavigationMenuLink>
                         </li>
                         <li>
-                          <NavigationMenuLink  className={' px-2  py-1 hover:bg-gray-100 rounded w-40 font-bold'}>
+                          <NavigationMenuLink
+                            className={
+                              " px-2  py-1 hover:bg-gray-100 rounded w-40 font-bold"
+                            }
+                          >
                             Booking
                           </NavigationMenuLink>
                         </li>
                         <li>
-                          <NavigationMenuLink  className={' px-2  py-1 hover:bg-gray-100 rounded w-40 font-bold'}>
+                          <NavigationMenuLink
+                            className={
+                              " px-2  py-1 hover:bg-gray-100 rounded w-40 font-bold"
+                            }
+                          >
                             Destination
                           </NavigationMenuLink>
                         </li>
                         <li>
-                          <NavigationMenuLink  className={' px-2  py-1 hover:bg-gray-100 rounded w-40 font-bold'}>
-                           Travel Guides
+                          <NavigationMenuLink
+                            className={
+                              " px-2  py-1 hover:bg-gray-100 rounded w-40 font-bold"
+                            }
+                          >
+                            Travel Guides
                           </NavigationMenuLink>
                         </li>
                         <li>
-                          <NavigationMenuLink  className={' px-2  py-1 hover:bg-gray-100 rounded w-40 font-bold'}>
+                          <NavigationMenuLink
+                            className={
+                              " px-2  py-1 hover:bg-gray-100 rounded w-40 font-bold"
+                            }
+                          >
                             Testimonial
                           </NavigationMenuLink>
                         </li>
                         <li>
-                          <NavigationMenuLink  className={' px-2  py-1 hover:bg-gray-100 rounded w-40 font-bold'}>
+                          <NavigationMenuLink
+                            className={
+                              " px-2  py-1 hover:bg-gray-100 rounded w-40 font-bold"
+                            }
+                          >
                             404 Page
                           </NavigationMenuLink>
                         </li>
                       </ul>
                     </NavigationMenuContent>
                   </NavigationMenuItem>
-                   <NavigationMenuItem>
+                  <NavigationMenuItem>
                     <NavigationMenuLink
                       className={
                         "px-0 py-0 hover:bg-transparent hover:text-green-800 font-bold text-md hover:underline underline-offset-38 hover:decoration-2"
                       }
                     >
                       {" "}
-                     Contact
+                      Contact
                     </NavigationMenuLink>
                   </NavigationMenuItem>
-                  <Button className={'py-4 px-5 rounded-4xl bg-green-800 font-bold text-md'}>Register</Button>
+                  <Button
+                    className={
+                      "py-4 px-5 rounded-4xl bg-green-800 font-bold text-md"
+                    }
+                  >
+                    Register
+                  </Button>
                 </NavigationMenuList>
               </NavigationMenu>
             </div>
@@ -242,27 +315,73 @@ function Home() {
       <section className=" container mx-auto mt-25 ">
         <div className="grid grid-cols-2  gap-15 px-15">
           <div>
-            <img className="w-150 h-110 " src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLTXaIVy9mMIGZij1T09YxF8oSKxzNO7cULQ&s" alt="" />
+            <img
+              className="w-150 h-110 "
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLTXaIVy9mMIGZij1T09YxF8oSKxzNO7cULQ&s"
+              alt=""
+            />
           </div>
           <div>
-            <h3 className="flex items-center gap-2 text-green-800 font-bold">ABOUT US <BsThreeDots className="text-green-800 text-2xl" /></h3>
-            <h1 className="text-4xl font-bold">Welcome to <span className="text-green-800">Tourist</span></h1>
-            <p className="mt-5 text-gray-600 font-semibold">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit quae consequuntur in placeat, natus, quidem officia error fugiat maiores nostrum excepturi dignissimos reiciendis unde.</p>
-            <p className="mt-5 text-gray-600 font-semibold">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto quis, sit placeat distinctio quod expedita, magni aliquid tempore dolorem voluptatem, numquam soluta perspiciatis facere dignissimos 
-              architecto vero sed est blanditiis?</p>
-              <ul className="mt-5 text-gray-600 font-semibold">
-                <li className="flex items-center gap-2"><FaArrowRight /> First class flight</li>
-                <li className="flex items-center gap-2"><FaArrowRight /> 5 star Accommodation</li>
-                <li className="flex items-center gap-2"><FaArrowRight /> 150 Premium city tour</li>
-              </ul>
-              <Button className={'px-6 py-7 mt-5 bg-green-800 font-bold'}>Read More</Button>
+            <h3 className="flex items-center gap-2 text-green-800 font-bold">
+              ABOUT US <BsThreeDots className="text-green-800 text-2xl" />
+            </h3>
+            <h1 className="text-4xl font-bold">
+              Welcome to <span className="text-green-800">Tourist</span>
+            </h1>
+            <p className="mt-5 text-gray-600 font-semibold">
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+              Reprehenderit quae consequuntur in placeat, natus, quidem officia
+              error fugiat maiores nostrum excepturi dignissimos reiciendis
+              unde.
+            </p>
+            <p className="mt-5 text-gray-600 font-semibold">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto
+              quis, sit placeat distinctio quod expedita, magni aliquid tempore
+              dolorem voluptatem, numquam soluta perspiciatis facere dignissimos
+              architecto vero sed est blanditiis?
+            </p>
+            <ul className="mt-5 text-gray-600 font-semibold">
+              <li className="flex items-center gap-2">
+                <FaArrowRight /> First class flight
+              </li>
+              <li className="flex items-center gap-2">
+                <FaArrowRight /> 5 star Accommodation
+              </li>
+              <li className="flex items-center gap-2">
+                <FaArrowRight /> 150 Premium city tour
+              </li>
+            </ul>
+            <Button className={"px-6 py-7 mt-5 bg-green-800 font-bold"}>
+              Read More
+            </Button>
           </div>
         </div>
       </section>
-      <section>
-         <div>
-          
-         </div>
+      <section className="container mx-auto mt-25">
+        <h3 className="flex gap-2 items-center justify-center text-xl font-bold text-green-800">
+          <BsThreeDots className="text-1xl"/> SERVICES <BsThreeDots className="text-1xl" />
+        </h3>
+        <h1 className="text-center font-bold text-3xl">Our Services</h1>
+        <div className="grid grid-cols-4  gap-4 mt-10 shadow-2xl hover:shadow-2xl px-10">
+          {card.map(({ id, image, title, description }) => (
+            <div key={id} className="bg-white shadow-2xl rounded-lg p-4 hover:-translate-y-2 hover:scale-105 hover:bg-green-800  hover:shadow-2xl transition-shadow duration-300 ">
+              <img src={image} alt={title} className="w-full h-48 object-cover rounded-t-lg" />
+              <h2 className="text-xl font-bold mt-4   ">{title}</h2>
+              <p className="text-gray-800 mt-2">{description}</p>
+              
+            </div>
+           
+          ))}
+          {card.map(({ id, image, title, description }) => (
+            <div key={id} className="bg-white shadow-2xl rounded-lg p-4 hover:-translate-y-2 hover:scale-105 hover:bg-green-800  hover:shadow-2xl transition-shadow duration-300 ">
+              <img src={image} alt={title} className="w-full h-48 object-cover rounded-t-lg" />
+              <h2 className="text-xl font-bold mt-4   ">{title}</h2>
+              <p className="text-gray-800 mt-2">{description}</p>
+              
+            </div>
+           
+          ))}
+        </div>
       </section>
     </>
   );
