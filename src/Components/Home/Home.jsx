@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Carousel,
   CarouselContent,
@@ -20,13 +20,33 @@ import {
 } from "@/components/ui/navigation-menu";
 import { NavLink } from "react-router-dom";
 import { Button } from "../ui/button";
+import { BsThreeDots } from "react-icons/bs";
+import { FaArrowRight } from "react-icons/fa";
 
 function Home() {
+   const [scrolled, setScrolled] = useState(false);
+
+    useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 80);
+    };
+     window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+     }, [])
   return (
     <>
-      <section className=" relative h-screen w-full">
-        <nav className=" absolute top-0 z-30 w-full border-b-2 border-gray-950">
-          <div className=" container mx-auto flex items-center justify-between py-5 px-10">
+      <section className="relative  h-screen w-full  ">
+        <nav className={`
+          fixed  z-10 transition-all duration-300 border-b-2 border-gray-900
+          ${scrolled
+            ? "bg-white shadow-lg w-full mx-auto top-0 "
+            : "bg-transparent w-full "
+          }
+        `}>
+          <div className={`
+    flex items-center justify-between transition-all duration-300 
+    ${scrolled ? "px-8 py-4" : "px-10 py-5"}
+  `}>
             <div className="flex items-center">
               <IoLocationSharp className="text-5xl text-green-800" />
               <h1 className="text-4xl font-bold text-green-800">Tourist</h1>
@@ -219,15 +239,30 @@ function Home() {
           <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-10" />
         </Carousel>
       </section>
-      <section>
-        <div className="flex ">
+      <section className=" container mx-auto mt-25 ">
+        <div className="grid grid-cols-2  gap-15 px-15">
           <div>
-            <img src="" alt="" />
+            <img className="w-150 h-110 " src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLTXaIVy9mMIGZij1T09YxF8oSKxzNO7cULQ&s" alt="" />
           </div>
           <div>
-            
+            <h3 className="flex items-center gap-2 text-green-800 font-bold">ABOUT US <BsThreeDots className="text-green-800 text-2xl" /></h3>
+            <h1 className="text-4xl font-bold">Welcome to <span className="text-green-800">Tourist</span></h1>
+            <p className="mt-5 text-gray-600 font-semibold">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit quae consequuntur in placeat, natus, quidem officia error fugiat maiores nostrum excepturi dignissimos reiciendis unde.</p>
+            <p className="mt-5 text-gray-600 font-semibold">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto quis, sit placeat distinctio quod expedita, magni aliquid tempore dolorem voluptatem, numquam soluta perspiciatis facere dignissimos 
+              architecto vero sed est blanditiis?</p>
+              <ul className="mt-5 text-gray-600 font-semibold">
+                <li className="flex items-center gap-2"><FaArrowRight /> First class flight</li>
+                <li className="flex items-center gap-2"><FaArrowRight /> 5 star Accommodation</li>
+                <li className="flex items-center gap-2"><FaArrowRight /> 150 Premium city tour</li>
+              </ul>
+              <Button className={'px-6 py-7 mt-5 bg-green-800 font-bold'}>Read More</Button>
           </div>
         </div>
+      </section>
+      <section>
+         <div>
+          
+         </div>
       </section>
     </>
   );
