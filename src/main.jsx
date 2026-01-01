@@ -9,7 +9,8 @@ import Services from './Components/Service/Services';
 import ServiceDetails from './Components/Service/ServiceDetails';
 import Packages from './Components/Package/Packages';
 import PackageDetails from './Components/Package/PackageDetails';
-import { Contact } from 'lucide-react';
+import Contact from './Components/Contact/Contact';
+
 
 
 const router=createBrowserRouter(
