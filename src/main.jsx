@@ -3,13 +3,13 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 import { createBrowserRouter, createRoutesFromElements, Route, Router, RouterProvider } from "react-router-dom";
-import Home from './Components/Home/Home';
-import About from './Components/About/About'
-import Services from './Components/Service/Services';
-import ServiceDetails from './Components/Service/ServiceDetails';
-import Packages from './Components/Package/Packages';
-import PackageDetails from './Components/Package/PackageDetails';
-import Contact from './Components/Contact/Contact';
+import Home from './components/Home/Home';
+import About from './components/About/About'
+import Services from './components/Service/Services';
+import ServiceDetails from './components/Service/ServiceDetails';
+import Packages from './components/Package/Packages';
+import PackageDetails from './components/Package/PackageDetails';
+import Contact from './components/Contact/Contact';
 
 
 
