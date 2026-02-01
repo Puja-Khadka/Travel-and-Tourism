@@ -15,7 +15,7 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "../ui/carousel";
+} from "../ui/Carousel";
 import { NavLink } from "react-router-dom";
 import { Button } from "../ui/button";
 import { IoReorderThree } from "react-icons/io5";
